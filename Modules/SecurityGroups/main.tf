@@ -42,7 +42,7 @@ resource "aws_security_group" "asg" {
       from_port   = ingress.value
       to_port     = ingress.value
       protocol    = "tcp"
-      security_groups = [aws_security_group.elb]
+      security_groups = [aws_security_group.elb.id]
 
     }
   }
@@ -61,7 +61,7 @@ resource "aws_security_group" "asg" {
     Name        = "${var.vpc_name}-asg-sg"
     environment = "${var.environment}"
   }
-  depends_on = [aws_security_group.elb]
+  depends_on = [aws_security_group.elb.id]
 
 }
 
@@ -79,7 +79,7 @@ resource "aws_security_group" "rds" {
       to_port     = ingress.value
       protocol    = "tcp"
       # Reference ASG security group ID
-      security_groups = [aws_security_group.asg]
+      security_groups = [aws_security_group.asg.id]
     }
   }
 
@@ -97,6 +97,6 @@ resource "aws_security_group" "rds" {
     Name        = "${var.vpc_name}-rds-sg"
     environment = "${var.environment}"
   }
-  depends_on = [aws_security_group.asg]
+  depends_on = [aws_security_group.asg.id]
 
 }
