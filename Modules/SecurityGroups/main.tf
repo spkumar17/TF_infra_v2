@@ -61,7 +61,7 @@ resource "aws_security_group" "asg" {
     Name        = "${var.vpc_name}-asg-sg"
     environment = "${var.environment}"
   }
-  depends_on = [aws_security_group.elb.id]
+  depends_on = [aws_security_group.elb]
 
 }
 
@@ -97,6 +97,6 @@ resource "aws_security_group" "rds" {
     Name        = "${var.vpc_name}-rds-sg"
     environment = "${var.environment}"
   }
-  depends_on = [aws_security_group.asg.id]
+  depends_on = [aws_security_group.asg]
 
 }
