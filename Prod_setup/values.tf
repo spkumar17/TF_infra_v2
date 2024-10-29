@@ -15,7 +15,7 @@ module "SecurityGroups" {
   vpc_name          = module.Network.vpc_name
   vpc_id            = module.Network.vpc_id
   service_ports_elb = ["80", "8080", "443"]
-  service_ports_asg = ["80", "8080", "443","3306"]
+  service_ports_asg = ["80", "8080", "443", "3306"]
   service_ports_rds = ["3306", "443", "80", "8080"]
   environment       = module.Network.environment
 }
