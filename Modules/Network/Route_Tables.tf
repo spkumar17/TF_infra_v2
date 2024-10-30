@@ -68,5 +68,5 @@ resource "aws_route_table_association" "Private_subnet_association" {
 resource "aws_route_table_association" "db_subnet_association" {
     count = length(var.private_subnet_cidr)
     subnet_id = element("${aws_subnet.db_subnets.*.id}",count.index)
-    route_table_id = aws_route_table.db_rt[0].id  # All use the same route table
+    route_table_id = aws_route_table.db_rt[1].id  # All use the same route table
 }
