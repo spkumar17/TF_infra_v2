@@ -22,7 +22,6 @@ resource "aws_iam_role_policy_attachment" "attach_s3LOGS_policy" {
 }
 
 resource "aws_flow_log" "flow_log" {
-  iam_role_arn    = "${aws_iam_role.vpc_flow_logs.arn}"
   log_destination      = var.bucket_name  
   log_destination_type = "s3"
   traffic_type         = "ALL"
