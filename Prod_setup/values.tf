@@ -51,14 +51,15 @@ module "ALB" {
 
 module "ASG" {
   source                    = "../Modules/ASG"
-  image_id                  = "ami-031ef535c8ee703b6"
+  image_id                  = "ami-0866a3c8686eaeeba"
   instance_type             = "t2.micro"
   instance_name             = "mainservers"
-  max_size                  = "4" 
+  max_size                  = "4"
   min_size                  = "2"
   health_check_grace_period = "300"
   health_check_type         = "ELB"
   desired_capacity          = "2"
+  key                       = "sshkey"
   asg                       = module.SecurityGroups.asg
   private_subnets           = module.Network.private_subnets
   aws_iam_instance_profile  = module.IAM.aws_iam_instance_profile
