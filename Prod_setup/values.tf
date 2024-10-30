@@ -89,6 +89,7 @@ module "VPC_LOGS" {
   vpc_id      = module.Network.vpc_id
   environment = module.Network.environment
   bucket_name = module.S3.bucket_name
+  s3_policy   = module.IAM.s3_policy
 }
 
 module "Route53" {
