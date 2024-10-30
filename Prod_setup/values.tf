@@ -54,7 +54,7 @@ module "ASG" {
   image_id                  = "ami-0866a3c8686eaeeba"
   instance_type             = "t2.micro"
   instance_name             = "mainservers"
-  max_size                  = "4"
+  max_size                  = "2"
   min_size                  = "2"
   health_check_grace_period = "300"
   health_check_type         = "ELB"
