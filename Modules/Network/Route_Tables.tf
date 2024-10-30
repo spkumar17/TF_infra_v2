@@ -16,12 +16,11 @@ resource "aws_route_table" "public_rt" {
 
 
 resource "aws_route_table" "private_rt" {
-    count = length("${aws_nat_gateway.natgw.*.id}")
     vpc_id = aws_vpc.myvpc.id
     
     route {
         cidr_block = "0.0.0.0/0"
-        nat_gateway_id = element("${aws_nat_gateway.natgw.*.id}",count.index)
+        nat_gateway_id ="${aws_nat_gateway.natgw[0].id}"
   }
 
   
@@ -34,12 +33,11 @@ resource "aws_route_table" "private_rt" {
 
 
 resource "aws_route_table" "db_rt" {
-    count = length("${aws_nat_gateway.natgw.*.id}")
     vpc_id = aws_vpc.myvpc.id
     
     route {
         cidr_block = "0.0.0.0/0"
-        nat_gateway_id = element("${aws_nat_gateway.natgw.*.id}",count.index)
+        nat_gateway_id ="${aws_nat_gateway.natgw[1].id}"
   }
 
   
@@ -61,12 +59,12 @@ resource "aws_route_table_association" "Public_subnet_association" {
 resource "aws_route_table_association" "Private_subnet_association" {
     count = length(var.private_subnet_cidr)
     subnet_id = element("${aws_subnet.private_subnets.*.id}",count.index)
-    route_table_id = aws_route_table.private_rt[0].id  # All use the same route table
+    route_table_id = aws_route_table.private_rt.id  # All use the same route table
 }
 
 
 resource "aws_route_table_association" "db_subnet_association" {
     count = length(var.private_subnet_cidr)
     subnet_id = element("${aws_subnet.db_subnets.*.id}",count.index)
-    route_table_id = aws_route_table.db_rt[1].id  # All use the same route table
+    route_table_id = aws_route_table.db_rt.id  # All use the same route table
 }

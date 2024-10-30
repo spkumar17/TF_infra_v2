@@ -74,3 +74,4 @@ variable "username" {
 
 variable "password" {}
 variable "database_name" {}
+variable "key" {}
