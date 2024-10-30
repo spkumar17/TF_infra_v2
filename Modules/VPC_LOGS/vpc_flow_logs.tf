@@ -34,9 +34,9 @@ resource "aws_iam_role" "vpc_flow_logs" {
   assume_role_policy = data.aws_iam_policy_document.assume_role.json
 }
 
-resource "aws_iam_role_policy_attachment" "attach_s3_policy" {
+resource "aws_iam_role_policy_attachment" "attach_s3LOGS_policy" {
   role       = aws_iam_role.vpc_flow_logs.name
-  policy_arn = aws_iam_policy.s3_policy.arn
+  policy_arn = aws_iam_policy.s3_policy2.arn
 }
 
 resource "aws_flow_log" "flow_log" {
