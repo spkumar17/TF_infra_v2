@@ -11,24 +11,6 @@ data "aws_iam_policy_document" "assume_role" {
   }
 }
 
-resource "aws_iam_policy" "s3_policy2" {
-  name = "S3Policy"
-
-  policy = jsonencode({
-    Version = "2012-10-17",
-    Statement = [
-      {
-        Effect = "Allow",
-        Action = [
-          "s3:PutObject",
-          "s3:PutObjectAcl",
-        ],
-        Resource = "${var.bucket_name}/*"  # Restrict to your specific bucket
-      }
-    ]
-  })
-}
-
 resource "aws_iam_role" "vpc_flow_logs" {
   name               = "vpc_flow_logs"
   assume_role_policy = data.aws_iam_policy_document.assume_role.json
@@ -36,7 +18,7 @@ resource "aws_iam_role" "vpc_flow_logs" {
 
 resource "aws_iam_role_policy_attachment" "attach_s3LOGS_policy" {
   role       = aws_iam_role.vpc_flow_logs.name
-  policy_arn = aws_iam_policy.s3_policy2.arn
+  policy_arn = var.s3_policy
 }
 
 resource "aws_flow_log" "flow_log" {
