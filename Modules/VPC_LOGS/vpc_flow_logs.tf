@@ -11,7 +11,7 @@ data "aws_iam_policy_document" "assume_role" {
   }
 }
 
-resource "aws_iam_policy" "s3_policy" {
+resource "aws_iam_policy" "s3_policy2" {
   name = "S3Policy"
 
   policy = jsonencode({
