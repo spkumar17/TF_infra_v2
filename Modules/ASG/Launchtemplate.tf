@@ -21,9 +21,9 @@ resource "aws_launch_template" "launch_template" {
     }
 
     user_data = base64encode(templatefile("${path.module}/userdata.sh", {
-        db_instance_endpoint = "${var.db_instance_endpoint}"
-        username             = "${var.username}"
-        password             = "${var.password}"
+        db_instance_endpoint = var.db_instance_endpoint,
+        username             = var.username,
+        password             = var.password
     }))
 
 
