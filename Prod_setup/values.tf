@@ -52,7 +52,7 @@ module "ALB" {
 module "ASG" {
   source                    = "../Modules/ASG"
   image_id                  = "ami-0866a3c8686eaeeba"
-  instance_type             = "t2.micro"
+  instance_type             = "t2.medium"
   instance_name             = "mainservers"
   max_size                  = "2"
   min_size                  = "2"
