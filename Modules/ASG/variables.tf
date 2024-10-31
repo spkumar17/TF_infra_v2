@@ -68,10 +68,5 @@ variable "alb_target_group_arn"{
     type=string
 }
 
-variable "username" {
-  
-}
-
-variable "password" {}
 variable "database_name" {}
 variable "key" {}

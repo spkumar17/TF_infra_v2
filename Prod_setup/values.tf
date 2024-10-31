@@ -67,8 +67,8 @@ module "ASG" {
   db_instance_endpoint      = module.RDS.db_instance_endpoint
   alb_target_group_arn      = module.ALB.alb_target_group_arn
   database_name             = module.RDS.database_name
-  username                  = module.RDS.username
-  password                  = module.RDS.password
+  # username                  = module.RDS.username
+  # password                  = module.RDS.password
 }
 
 module "IAM" {
