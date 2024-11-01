@@ -13,7 +13,7 @@ sudo usermod -aG docker $USER
 sudo usermod -aG docker ssm-user
 sleep 5
 # Pull the latest version of the Docker image
-sudo docker pull prasannakumarsinganamalla431/petclinic:8
+sudo docker pull prasannakumarsinganamalla431/petclinic:11
 sleep 5
 # Run Docker container with environment variables (replace with your actual values from Terraform)
 sudo docker run -d --name petclinic \
@@ -22,5 +22,5 @@ sudo docker run -d --name petclinic \
 -e MYSQL_PASS=Devops#21 \
 -e MYSQL_ROOT_PASSWORD=Devops#21 \
 -p 80:80 \
-prasannakumarsinganamalla431/petclinic:8
+prasannakumarsinganamalla431/petclinic:11
 
