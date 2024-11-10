@@ -7,7 +7,6 @@ module "Network" {
   private_subnet_cidr = ["10.0.10.0/24", "10.0.20.0/24"]
   AZs                 = ["us-east-1a", "us-east-1b"]
   db_subnet_cidr      = ["10.0.30.0/24", "10.0.40.0/24"]
-
 }
 
 module "SecurityGroups" {
@@ -59,7 +58,7 @@ module "ASG" {
   health_check_grace_period = "300"
   health_check_type         = "ELB"
   desired_capacity          = "2"
-  key                       = "sshkey"
+  key                       = "jenkinskey"
   asg                       = module.SecurityGroups.asg
   private_subnets           = module.Network.private_subnets
   aws_iam_instance_profile  = module.IAM.aws_iam_instance_profile

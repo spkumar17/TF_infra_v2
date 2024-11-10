@@ -6,3 +6,10 @@ output "aws_iam_instance_profile" {
 output "s3_policy" {
   value = aws_iam_policy.s3_policy.arn
 }
+
+output "rds_policy" {
+  value = aws_iam_policy.rds_policy.arn
+}
+output "ssm_policy"{
+  value = aws_iam_policy.ssm_policy.arn
+}

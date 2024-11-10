@@ -17,10 +17,9 @@ sudo docker pull prasannakumarsinganamalla431/petclinic:11
 sleep 5
 # Run Docker container with environment variables (replace with your actual values from Terraform)
 sudo docker run -d --name petclinic \
--e MYSQL_URL=jdbc:mysql://${db_instance_endpoint}/petclinic \
--e MYSQL_USER=admin \
--e MYSQL_PASS=Devops#21 \
--e MYSQL_ROOT_PASSWORD=Devops#21 \
+-e MYSQL_URL="jdbc:mysql://${db_instance_endpoint}/petclinic" \
+-e MYSQL_USER="admin" \
+-e MYSQL_PASS="Devops#21" \
 -p 80:80 \
 prasannakumarsinganamalla431/petclinic:11
 
